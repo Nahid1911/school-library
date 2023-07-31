@@ -4,8 +4,7 @@
 
   <br/>
 
-  <h3><b>MORSE CODE
-</b></h3>
+  <h3><b> OPP School Library</b></h3>
 
 </div>
 
@@ -32,9 +31,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Morse code <a name="about-project"></a>
+# 📖 OPP School Library <a name="about-project"></a>
 
-**School Library** is a ruby method to decode a simple morse message with alphanumeric characters.
+**OPP School Library** is a ruby method to decode a simple morse message with alphanumeric characters.
 
 ## 🛠 Built With <a name="built-with"></a>
 
