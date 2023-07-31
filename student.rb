@@ -1,13 +1,12 @@
-retuired_relative 'person'
+retuire_relative 'person'
 
 class Student < Person
+  def initialize(id, age, classroom, name: 'Unknown', parent_permission: true)
+    super(id, age, name: name, parent_permission: parent_permission)
+    @classroom = classroom
+  end
 
-    def instance (id, name: "Unknown", age, parent_permission: true, classroom)
-        super(id, name: name, age, parent_permission: parent_permission)
-        @classroom = classroom
-    end
-
-    def play_hooky
-        "¯\(ツ)/¯"
-    end
+  def play_hooky
+    '¯(ツ)/¯'
+  end
 end
