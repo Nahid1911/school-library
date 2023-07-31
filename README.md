@@ -4,7 +4,7 @@
 
   <br/>
 
-  <h3><b> OPP School Library</b></h3>
+  <h3><b> OOP School Library</b></h3>
 
 </div>
 
@@ -13,7 +13,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Morse code ](#-morse-code-)
+- [📖 OOP School Library ](#-morse-code-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -31,9 +31,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 OPP School Library <a name="about-project"></a>
+# 📖 OOP School Library <a name="about-project"></a>
 
-**OPP School Library** is a ruby method to decode a simple morse message with alphanumeric characters.
+**OOP School Library** is a ruby method to decode a simple morse message with alphanumeric characters.
 
 ## 🛠 Built With <a name="built-with"></a>
 
