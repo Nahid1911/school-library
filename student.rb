@@ -1,8 +1,9 @@
 retuired_relative 'person'
 
 class Student < Person
-    def instance (id, age, classroom, parent_permission: true, name: "Unknown")
-        super(id, age, parent_permission: parent_permission, name: name)
+
+    def instance (id, name: "Unknown", age, parent_permission: true, classroom)
+        super(id, name: name, age, parent_permission: parent_permission)
         @classroom = classroom
     end
 
