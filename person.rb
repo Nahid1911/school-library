@@ -3,7 +3,7 @@ class Person
     attr_reader :id
     attr_accessor :name, :age
 
-    def instance (id, name = "Unknown", age, parent_permission = true)
+    def instance (id, name: "Unknown", age, parent_permission: true)
         @id = id
         @age = age
         @parent_permission = parent_permission
