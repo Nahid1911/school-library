@@ -33,7 +33,7 @@
 
 # 📖 OOP School Library <a name="about-project"></a>
 
-**OOP School Library** In this project I will build a school library app using Ruby Object Oriented Programming(OOP).
+**OOP School Library** is a project where I will build a school library app using Ruby Object Oriented Programming(OOP).
 
 ## 🛠 Built With <a name="built-with"></a>
 
