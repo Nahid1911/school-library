@@ -15,9 +15,7 @@ capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
 puts capitalized_trimmed_person.correct_name
 
 
-hia = Student.new(5, 'Hia')
-hima = Student.new(2, math_class, 'Hima')
-chaity = Student.new(28, math_class, 'Chaity')
-math_class = Classroom.new("Math Class")
-
-
+Student.new(5, 'Hia')
+Student.new(2, math_class, 'Hima')
+Student.new(28, math_class, 'Chaity')
+Classroom.new('Math Class')
