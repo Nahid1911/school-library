@@ -1,6 +1,10 @@
 require_relative 'person'
 require_relative 'trimmer_decorator'
 require_relative 'capitalize_decorator'
+require_relative 'classroom'
+require_relative 'student'
+require_relative 'book'
+require_relative 'rental'
 
 person = Person.new(22, 'maximilianus')
 person.correct_name
