@@ -1,9 +1,9 @@
 require_relative 'person'
 
 class Student < Person
-  attr_reader :id, :parent_permission
+  attr_accessor :id, :parent_permission
 
-  def initialize(age, name, parent_permission = true)
+  def initialize(age, name, parent_permission)
     super(age, name)
     @id = Random.rand(1..1000)
     @parent_permission = parent_permission
