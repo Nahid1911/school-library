@@ -3,12 +3,10 @@ require_relative 'nameable'
 class Person < Nameable
   attr_accessor :name, :age, :rentals
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(age, name = 'Unknown')
     super()
-    @id = rand(1..1000)
     @age = age
     @name = name
-    @parent_permission = parent_permission
     @rentals = []
   end
 
@@ -24,9 +22,11 @@ class Person < Nameable
     @rentals.push(Rental.new(date, self, book)) unless @rental.include?(Rental.new(date, self, book))
   end
 
-  private
-
-  def of_age?
+  private def of_age?
     @age >= 18
+  end
+
+  def to_s
+    "[Person] Name: #{name}, ID: #{id}, Age: #{age}"
   end
 end
