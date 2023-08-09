@@ -28,11 +28,6 @@ def process_choice(app, choice)
   end
 end
 
-def exit_app
-  puts 'Exiting the app....'
-  exit(0)
-end
-
 def main
   app = App.new
   loop do

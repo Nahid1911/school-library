@@ -16,4 +16,18 @@ class Student < Person
   def to_s
     "[Student] Name: #{@name}, ID: #{@id}, Age: #{@age}"
   end
+
+  def to_json(*arg)
+    { 
+      JSON.create_id => self.class.name,
+      id: self.id,
+      age: self.age,
+      name: self.name,
+      parent_permission: self.parent_permission
+    }.to_json(*arg)
+  end
+
+  def self.json_create(object)
+    new(object['age'], object['id'], object['name'], object['parent_permission'])
+  end
 end

@@ -1,0 +1,34 @@
+[
+  {
+    "json_class": "Rental",
+    "date": "23",
+    "book": {
+      "id": 861,
+      "title": "b2",
+      "author": "a1"
+    },
+    "person": {
+      "json_class": "Teacher",
+      "id": 42,
+      "name": "t1",
+      "age": 33,
+      "specialization": "acc"
+    }
+  },
+  {
+    "json_class": "Rental",
+    "date": "23",
+    "book": {
+      "id": 456,
+      "title": "b1",
+      "author": "a1"
+    },
+    "person": {
+      "json_class": "Teacher",
+      "id": 42,
+      "name": "t1",
+      "age": 33,
+      "specialization": "acc"
+    }
+  }
+]

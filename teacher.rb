@@ -14,6 +14,20 @@ class Teacher < Person
   end
 
   def to_s
-    "[Teacher] Name: #{@name}, ID: #{@id}, Age: #{@age}"
+    "[Teacher] Name: #{@name}, ID: #{@id}, Age: #{@age}, Specialization: #{specialization}"
+  end
+
+  def to_json(*arg)
+    {
+      JSON.create_id => self.class.name,
+      id: self.id,
+      name: self.name,
+      age: self.age,
+      specialization: self.specialization
+    }.to_json(*arg)
+  end
+
+  def self.json_create(object)
+    new(object['id'], object['age'], object['name'], object['specialization'])
   end
 end

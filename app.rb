@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'person'
 require_relative 'book'
 require_relative 'rental'
@@ -9,81 +10,89 @@ class App
     @people = []
     @books = []
     @rentals = []
+    load_data_from_files
   end
 
   def list_all_books
     puts 'Here is the list of all books'
     @books.each do |book|
-      puts "Title: \"#{book.title}\", Author: #{book.author}"
+      puts "Title: \"#{book['title']}\", Author: #{book['author']}"
     end
   end
 
   def list_all_people
     puts 'Here is the list of all people'
-    @people.each do |people|
-      puts people
+    @people.each_with_index do |person, index|
+      if person['json_class'] == 'Teacher'
+        attribute_to_display = "Specialization: #{person['specialization']}"
+      else
+        attribute_to_display = "Parent Permission: #{person['parent_permission']}"
+      end
+      puts "#{index}) [#{person['json_class']}], ID: #{person['id']}, ID: #{person['age']}, ID: #{person['name']}, #{attribute_to_display}" 
     end
   end
 
   def create_student(age, name, parent_permission)
     student = Student.new(age, name, parent_permission)
     @people << student
+    save_data_to_people
   end
 
   def create_teacher(age, specialization, name)
     teacher = Teacher.new(age, specialization, name)
     @people << teacher
+    save_data_to_people
   end
 
   def create_book(title, author)
     book = Book.new(title, author)
     @books << book
+    save_data_to_books
   end
 
   def create_rental(date, book, person)
     rental = Rental.new(date, book, person)
     @rentals << rental
+    save_data_to_rentals
   end
 
   def all_books_for_rent
     @books.each_with_index do |book, index|
-      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
+      puts "#{index}) Title: \"#{book['title']}\", Author: #{book['author']}, id: #{book['id']}"
     end
   end
 
   def all_person_name_for_rent
     @people.each_with_index do |person, index|
-      if person.is_a?(Student)
-        puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      elsif person.is_a?(Teacher)
-        puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      if person['json_class'] == 'teacher'
+        attribute_to_display = "Specialization: #{person['specialization']}"
       else
-        puts "#{index}) [Unknown Person] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        attribute_to_display = "Parent Permission: #{person['parent_permission']}"
       end
+      puts "#{index}) [#{person['json_class']}], ID: #{person['id']}, ID: #{person['age']}, ID: #{person['name']}, #{attribute_to_display}}" 
     end
   end
 
   def selected_book_for_rent(selection)
-    return @books[selection].id unless selection.negative? || selection >= @books.length
+    return @books[selection] unless selection.negative? || selection >= @books.length
 
     puts 'Invalid selection. Please choose a valid index.'
   end
 
   def selected_person_for_rent(selection)
-    return @people[selection].id unless selection.negative? || selection >= @people.length
+    return @people[selection] unless selection.negative? || selection >= @people.length
 
     puts 'Invalid selection. Please choose a valid index.'
   end
 
   def display_book_rented_by_person(id)
-    rented_books_by_id = @rentals.select { |rental| rental.person == id.to_i }
+    rented_books_by_id = @rentals.select { |rental| rental['person']['id'] == id.to_i }
 
     if rented_books_by_id.empty?
       puts 'No rentals found for the given id. Please choose a valid id.'
     else
       rented_books_by_id.each do |rental|
-        book = @books.find { |b| b.id == rental.book }
-        puts "Date: #{rental.date}, Title: #{book.title} by #{book.author}"
+        puts "Date: #{rental['date']}, Title: #{rental['book']['title']} by #{rental['book']['author']}"
       end
     end
   end
@@ -167,4 +176,28 @@ class App
     puts 'List all rentals'
     display_book_rented_by_person(id)
   end
+  
+
+  def save_data_to_people
+    File.open('people.json', "w")  { |file| file.write(JSON.dump(@people))}
+  end
+
+  def save_data_to_books
+    File.open('books.json', "w")  { |file| file.write(JSON.dump(@books))}
+  end
+
+  def save_data_to_rentals
+    File.open('rentals.json', "w")  { |file| file.write(JSON.dump(@rentals))}
+  end
+
+  def load_data_from_files
+    @people = JSON.parse(File.read('people.json')) rescue []
+    @books = JSON.parse(File.read('books.json')) rescue []
+    @rentals = JSON.parse(File.read('rentals.json')) rescue []
+  end
+  
+def exit_app
+  puts 'Exiting the app....'
+  exit(0)
+end
 end
